@@ -81,103 +81,135 @@ export default function Dashboard() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <div className="container-vercel section-spacing animate-fade-in">
+      <div className="container-vercel animate-fade-in">
         {/* Dashboard Header */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
-            <p className="text-lg text-muted-foreground">Manage your items and account</p>
-          </div>
-          <div className="flex items-center space-x-3 mt-4 lg:mt-0">
-            <div className={`status-badge ${isPro ? "active" : "inactive"}`}>
-              {isPro ? (
-                <>
-                  <Crown className="w-3 h-3" />
-                  Pro Plan
-                </>
-              ) : (
-                "Free Plan"
-              )}
+        <div className="py-12 border-b border-border/50">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
+            <div className="flex-1">
+              <h1 className="text-4xl font-bold text-foreground tracking-tight">Dashboard</h1>
+              <p className="text-lg text-muted-foreground mt-2">Manage your items and account</p>
             </div>
-            <Link href="/settings">
-              <button className="btn-outline-minimal">
-                <Settings className="h-4 w-4 mr-1" />
-                Settings
-              </button>
-            </Link>
-          </div>
-        </div>
-
-        {/* Upgrade Banner (Free Users) */}
-        {!isPro && (
-          <div className="card-minimal border-primary/20 bg-primary/5 p-4 mb-8">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-semibold text-foreground">Upgrade to Pro</h3>
-                <p className="text-sm text-muted-foreground">Unlock unlimited items and advanced features</p>
+            <div className="flex items-center space-x-3 mt-6 lg:mt-0">
+              <div className={`status-badge ${isPro ? "active" : "inactive"}`}>
+                {isPro ? (
+                  <>
+                    <Crown className="w-3 h-3" />
+                    Pro Plan
+                  </>
+                ) : (
+                  "Free Plan"
+                )}
               </div>
-              <Link href="/subscribe">
-                <button className="btn-minimal">
-                  Upgrade Now
+              <Link href="/settings">
+                <button className="btn-outline-minimal">
+                  <Settings className="h-4 w-4 mr-1" />
+                  Settings
                 </button>
               </Link>
             </div>
           </div>
-        )}
-
-        {/* Quick Stats */}
-        <div className="grid-3 mb-8">
-          <div className="card-minimal">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Items Created</p>
-                <p className="text-2xl font-bold text-foreground">
-                  {itemCount} {!isPro ? "/ 1" : ""}
-                </p>
-              </div>
-              <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
-                <Package className="text-foreground h-5 w-5" />
-              </div>
-            </div>
-          </div>
-          
-          <div className="card-minimal">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Plan Status</p>
-                <p className="text-2xl font-bold text-foreground">
-                  {isPro ? "Pro" : "Free"}
-                </p>
-              </div>
-              <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
-                <User className="text-foreground h-5 w-5" />
-              </div>
-            </div>
-          </div>
-          
-          <div className="card-minimal">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Account Since</p>
-                <p className="text-2xl font-bold text-foreground">
-                  {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : "Today"}
-                </p>
-              </div>
-              <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
-                <Calendar className="text-foreground h-5 w-5" />
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* Item Manager */}
-        <ItemManager 
-          isPro={isPro} 
-          itemCount={itemCount}
-          onItemCreated={() => {
-            queryClient.invalidateQueries({ queryKey: ["/api/items"] });
-          }}
-        />
+        {/* Main Content */}
+        <div className="py-12">
+          {/* Upgrade Banner (Free Users) */}
+          {!isPro && (
+            <div className="card-minimal border-primary/20 bg-primary/5 p-6 mb-12">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">Upgrade to Pro</h3>
+                  <p className="text-muted-foreground">Unlock unlimited items and advanced features</p>
+                </div>
+                <Link href="/subscribe">
+                  <button className="btn-minimal">
+                    Upgrade Now
+                  </button>
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* Overview Stats */}
+          <div className="mb-12">
+            <h2 className="text-xl font-semibold text-foreground mb-6">Overview</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="card-minimal p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-muted-foreground mb-2">Items Created</p>
+                    <p className="text-3xl font-bold text-foreground">
+                      {itemCount}
+                    </p>
+                    {!isPro && (
+                      <p className="text-sm text-muted-foreground mt-1">of 1 available</p>
+                    )}
+                  </div>
+                  <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
+                    <Package className="text-foreground h-6 w-6" />
+                  </div>
+                </div>
+              </div>
+              
+              <div className="card-minimal p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-muted-foreground mb-2">Plan Status</p>
+                    <p className="text-3xl font-bold text-foreground">
+                      {isPro ? "Pro" : "Free"}
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {isPro ? "Unlimited access" : "Limited access"}
+                    </p>
+                  </div>
+                  <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
+                    <User className="text-foreground h-6 w-6" />
+                  </div>
+                </div>
+              </div>
+              
+              <div className="card-minimal p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-muted-foreground mb-2">Account Since</p>
+                    <p className="text-3xl font-bold text-foreground">
+                      {user.createdAt ? new Date(user.createdAt).toLocaleDateString('en-US', { 
+                        month: 'short', 
+                        day: 'numeric' 
+                      }) : "Today"}
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {user.createdAt ? new Date(user.createdAt).getFullYear() : new Date().getFullYear()}
+                    </p>
+                  </div>
+                  <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
+                    <Calendar className="text-foreground h-6 w-6" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Items Section */}
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-semibold text-foreground">Items</h2>
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-muted-foreground">
+                  {itemCount} {itemCount === 1 ? 'item' : 'items'}
+                </span>
+              </div>
+            </div>
+
+            {/* Item Manager */}
+            <ItemManager 
+              isPro={isPro} 
+              itemCount={itemCount}
+              onItemCreated={() => {
+                queryClient.invalidateQueries({ queryKey: ["/api/items"] });
+              }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -181,23 +181,23 @@ export function ItemManager({ isPro, itemCount, onItemCreated }: ItemManagerProp
         }}
       >
         <DialogTrigger asChild>
-          <Button className="w-full">
+          <button className="btn-outline-minimal w-full py-3">
             <Plus className="mr-2 h-4 w-4" />
             Create New Item
-          </Button>
+          </button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>
+            <DialogTitle className="text-xl font-semibold">
               {editingItem ? "Edit Item" : "Create New Item"}
             </DialogTitle>
-            <DialogDescription>
+            <DialogDescription className="text-muted-foreground">
               {editingItem ? "Update your item details" : "Create a new item for your account"}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div>
-              <label htmlFor="itemName" className="block text-sm font-medium mb-1">
+              <label htmlFor="itemName" className="block text-sm font-medium mb-2">
                 Item Name
               </label>
               <Input
@@ -205,10 +205,11 @@ export function ItemManager({ isPro, itemCount, onItemCreated }: ItemManagerProp
                 value={itemName}
                 onChange={(e) => setItemName(e.target.value)}
                 placeholder="Enter item name"
+                className="w-full"
               />
             </div>
             <div>
-              <label htmlFor="itemDescription" className="block text-sm font-medium mb-1">
+              <label htmlFor="itemDescription" className="block text-sm font-medium mb-2">
                 Description (Optional)
               </label>
               <Textarea
@@ -217,94 +218,88 @@ export function ItemManager({ isPro, itemCount, onItemCreated }: ItemManagerProp
                 onChange={(e) => setItemDescription(e.target.value)}
                 placeholder="Enter item description"
                 rows={3}
+                className="w-full"
               />
             </div>
-            <div className="flex justify-end space-x-2">
-              <Button
-                variant="outline"
+            <div className="flex justify-end space-x-2 pt-4">
+              <button
+                className="btn-outline-minimal"
                 onClick={() => setShowCreateDialog(false)}
               >
                 Cancel
-              </Button>
-              <Button
+              </button>
+              <button
+                className="btn-minimal"
                 onClick={editingItem ? handleUpdateItem : handleCreateItem}
                 disabled={createMutation.isPending || updateMutation.isPending}
               >
                 {editingItem ? "Update" : "Create"}
-              </Button>
+              </button>
             </div>
           </div>
         </DialogContent>
       </Dialog>
 
       {/* Items List */}
-      <div className="grid gap-4">
+      <div className="space-y-4">
         {items.length === 0 ? (
-          <Card>
-            <CardContent className="pt-6">
-              <div className="text-center text-muted-foreground">
-                <p>No items yet. Create your first item!</p>
-              </div>
-            </CardContent>
-          </Card>
+          <div className="card-minimal p-8">
+            <div className="text-center text-muted-foreground">
+              <p>No items yet. Create your first item!</p>
+            </div>
+          </div>
         ) : (
           items.map((item: Item) => (
-            <Card key={item.id}>
-              <CardHeader>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <CardTitle className="text-lg">{item.name}</CardTitle>
-                    {item.description && (
-                      <CardDescription className="mt-1">
-                        {item.description}
-                      </CardDescription>
-                    )}
-                  </div>
-                  <div className="flex space-x-2">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => startEditing(item)}
-                    >
-                      <Edit3 className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => deleteMutation.mutate(item.id)}
-                      disabled={deleteMutation.isPending}
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
+            <div key={item.id} className="card-minimal p-6">
+              <div className="flex justify-between items-start">
+                <div className="flex-1">
+                  <h3 className="font-semibold text-foreground text-lg">{item.name}</h3>
+                  {item.description && (
+                    <p className="text-muted-foreground mt-1">
+                      {item.description}
+                    </p>
+                  )}
+                  <div className="flex items-center space-x-4 mt-3">
+                    <span className="text-sm text-muted-foreground">
+                      Created {new Date(item.createdAt).toLocaleDateString()}
+                    </span>
+                    <div className={`status-badge ${item.isActive ? "active" : "inactive"}`}>
+                      {item.isActive ? "Active" : "Inactive"}
+                    </div>
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <span>Created: {new Date(item.createdAt).toLocaleDateString()}</span>
-                  <Badge variant="outline">
-                    {item.isActive ? "Active" : "Inactive"}
-                  </Badge>
+                <div className="flex space-x-2">
+                  <button
+                    className="btn-outline-minimal"
+                    onClick={() => startEditing(item)}
+                  >
+                    <Edit3 className="h-4 w-4" />
+                  </button>
+                  <button
+                    className="btn-outline-minimal text-red-600 hover:text-red-700"
+                    onClick={() => deleteMutation.mutate(item.id)}
+                    disabled={deleteMutation.isPending}
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </button>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))
         )}
       </div>
 
       {/* Usage Info */}
-      <Card>
-        <CardContent className="pt-6">
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-muted-foreground">
-              Items Used: {itemCount}
-            </span>
-            <Badge variant={isPro ? "default" : "secondary"}>
-              {isPro ? "Pro" : "Free"} {isPro ? "(Unlimited)" : "(1 item limit)"}
-            </Badge>
+      <div className="card-minimal p-4">
+        <div className="flex justify-between items-center">
+          <span className="text-sm text-muted-foreground">
+            Items Used: {itemCount}
+          </span>
+          <div className={`status-badge ${isPro ? "active" : "inactive"}`}>
+            {isPro ? "Pro" : "Free"} {isPro ? "(Unlimited)" : "(1 item limit)"}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }
