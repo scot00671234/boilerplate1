@@ -120,7 +120,7 @@ export default function Landing() {
             </motion.p>
             
             <motion.div 
-              className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 px-4"
+              className="flex justify-center px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
@@ -130,19 +130,10 @@ export default function Landing() {
                 variant="primary"
                 size="lg"
                 pulse={true}
-                className="group w-full sm:w-auto min-w-[200px]"
+                className="group"
               >
-                Get started for free
+                Get started
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </AnimatedButton>
-              
-              <AnimatedButton
-                onClick={handleGetStarted}
-                variant="secondary"
-                size="lg"
-                className="w-full sm:w-auto min-w-[140px]"
-              >
-                View demo
               </AnimatedButton>
             </motion.div>
 
@@ -355,7 +346,7 @@ export default function Landing() {
             
             {/* Pro Plan */}
             <motion.div 
-              className="group relative p-8 rounded-3xl bg-gradient-primary text-primary-foreground text-center hover-lift shadow-strong h-full"
+              className="group relative p-8 rounded-3xl bg-gradient-to-br from-blue-600 to-purple-700 text-white text-center hover-lift shadow-strong h-full"
               whileHover={{ 
                 scale: 1.02,
                 boxShadow: "0 25px 50px rgba(0,0,0,0.2)",
@@ -379,11 +370,11 @@ export default function Landing() {
               </motion.div>
               
               <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-2">Pro</h3>
-                <div className="text-5xl font-bold mb-3">
-                  $15<span className="text-xl font-normal opacity-80">/month</span>
+                <h3 className="text-2xl font-bold mb-2 text-white">Pro</h3>
+                <div className="text-5xl font-bold mb-3 text-white">
+                  $15<span className="text-xl font-normal text-blue-100">/month</span>
                 </div>
-                <p className="opacity-90">For growing businesses</p>
+                <p className="text-blue-100">For growing businesses</p>
               </div>
               
               <ul className="space-y-4 mb-10 text-left">
@@ -401,7 +392,7 @@ export default function Landing() {
                     viewport={{ once: true }}
                     transition={{ delay: 1.2 + index * 0.1, duration: 0.4 }}
                   >
-                    <Check className="text-green-400 mr-3 h-5 w-5 flex-shrink-0" />
+                    <Check className="text-green-300 mr-3 h-5 w-5 flex-shrink-0" />
                     <span className="text-sm sm:text-base font-medium text-white">{feature}</span>
                   </motion.li>
                 ))}
@@ -411,7 +402,7 @@ export default function Landing() {
                 onClick={handleGetStarted}
                 variant="secondary"
                 size="lg"
-                className="w-full bg-white text-black hover:bg-gray-100"
+                className="w-full bg-white text-blue-600 hover:bg-blue-50 font-semibold"
                 pulse={true}
               >
                 Upgrade to Pro
@@ -463,7 +454,7 @@ export default function Landing() {
                 pulse={true}
                 className="text-lg px-10 py-4"
               >
-                Start building today
+                Get started
                 <ArrowRight className="ml-2 w-5 h-5" />
               </AnimatedButton>
             </motion.div>
