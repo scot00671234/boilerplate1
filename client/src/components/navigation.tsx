@@ -69,9 +69,9 @@ export function Navigation() {
 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <button className="btn-outline-minimal">
-                      <User className="w-4 h-4 mr-1" />
-                      {user.firstName || "User"}
+                    <button className="btn-outline-minimal flex items-center">
+                      <User className="w-4 h-4 mr-2" />
+                      <span className="text-sm font-medium">{user.firstName || "User"}</span>
                     </button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-64 bg-background/95 backdrop-blur-md border border-border/50 shadow-lg" align="end" forceMount>

@@ -225,6 +225,8 @@ export default function Login() {
                       value={loginForm.password}
                       onChange={(e) => setLoginForm({...loginForm, password: e.target.value})}
                       required
+                      autoComplete="current-password"
+                      style={{ paddingRight: '2.5rem' }}
                     />
                     <Button
                       type="button"
@@ -297,6 +299,8 @@ export default function Login() {
                       value={signupForm.password}
                       onChange={(e) => setSignupForm({...signupForm, password: e.target.value})}
                       required
+                      autoComplete="new-password"
+                      style={{ paddingRight: '2.5rem' }}
                     />
                     <Button
                       type="button"
@@ -319,6 +323,8 @@ export default function Login() {
                       value={signupForm.confirmPassword}
                       onChange={(e) => setSignupForm({...signupForm, confirmPassword: e.target.value})}
                       required
+                      autoComplete="new-password"
+                      style={{ paddingRight: '2.5rem' }}
                     />
                     <Button
                       type="button"
