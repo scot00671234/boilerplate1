@@ -133,7 +133,6 @@ export default function Landing() {
                 className="group"
               >
                 Get started
-                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
               </AnimatedButton>
             </motion.div>
 
@@ -455,7 +454,6 @@ export default function Landing() {
                 className="text-lg px-10 py-4"
               >
                 Get started
-                <ArrowRight className="ml-2 w-5 h-5" />
               </AnimatedButton>
             </motion.div>
           </motion.div>
