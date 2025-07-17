@@ -237,7 +237,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
@@ -253,6 +253,14 @@
 .status-badge.inactive {
   background: hsl(0 0% 95%);
   color: hsl(0 0% 45%);
+}
+
+/* Enhanced dropdown styling */
+.dropdown-content {
+  background: hsl(var(--background) / 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid hsl(var(--border) / 0.5);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 /* Grid layouts */

@@ -89,7 +89,7 @@ export default function Dashboard() {
               <h1 className="text-4xl font-bold text-foreground tracking-tight">Dashboard</h1>
               <p className="text-lg text-muted-foreground mt-2">Manage your items and account</p>
             </div>
-            <div className="flex items-center space-x-3 mt-6 lg:mt-0">
+            <div className="flex items-center mt-6 lg:mt-0">
               <div className={`status-badge ${isPro ? "active" : "inactive"}`}>
                 {isPro ? (
                   <>
@@ -100,12 +100,6 @@ export default function Dashboard() {
                   "Free Plan"
                 )}
               </div>
-              <Link href="/settings">
-                <button className="btn-outline-minimal">
-                  <Settings className="h-4 w-4 mr-1" />
-                  Settings
-                </button>
-              </Link>
             </div>
           </div>
         </div>
@@ -114,14 +108,19 @@ export default function Dashboard() {
         <div className="py-12">
           {/* Upgrade Banner (Free Users) */}
           {!isPro && (
-            <div className="card-minimal border-primary/20 bg-primary/5 p-6 mb-12">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-1">Upgrade to Pro</h3>
-                  <p className="text-muted-foreground">Unlock unlimited items and advanced features</p>
+            <div className="card-minimal border-primary/20 bg-gradient-to-r from-primary/5 to-primary/10 p-6 mb-12">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                    <Crown className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground mb-1">Upgrade to Pro</h3>
+                    <p className="text-muted-foreground">Unlock unlimited items and advanced features</p>
+                  </div>
                 </div>
                 <Link href="/subscribe">
-                  <button className="btn-minimal">
+                  <button className="btn-minimal whitespace-nowrap">
                     Upgrade Now
                   </button>
                 </Link>
@@ -131,11 +130,11 @@ export default function Dashboard() {
 
           {/* Overview Stats */}
           <div className="mb-12">
-            <h2 className="text-xl font-semibold text-foreground mb-6">Overview</h2>
+            <h2 className="text-2xl font-semibold text-foreground mb-8">Overview</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="card-minimal p-6">
+              <div className="card-minimal p-6 hover:shadow-md transition-shadow">
                 <div className="flex items-center justify-between">
-                  <div>
+                  <div className="flex-1">
                     <p className="text-sm font-medium text-muted-foreground mb-2">Items Created</p>
                     <p className="text-3xl font-bold text-foreground">
                       {itemCount}
@@ -144,15 +143,15 @@ export default function Dashboard() {
                       <p className="text-sm text-muted-foreground mt-1">of 1 available</p>
                     )}
                   </div>
-                  <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
-                    <Package className="text-foreground h-6 w-6" />
+                  <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
+                    <Package className="text-blue-600 h-6 w-6" />
                   </div>
                 </div>
               </div>
               
-              <div className="card-minimal p-6">
+              <div className="card-minimal p-6 hover:shadow-md transition-shadow">
                 <div className="flex items-center justify-between">
-                  <div>
+                  <div className="flex-1">
                     <p className="text-sm font-medium text-muted-foreground mb-2">Plan Status</p>
                     <p className="text-3xl font-bold text-foreground">
                       {isPro ? "Pro" : "Free"}
@@ -161,15 +160,19 @@ export default function Dashboard() {
                       {isPro ? "Unlimited access" : "Limited access"}
                     </p>
                   </div>
-                  <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
-                    <User className="text-foreground h-6 w-6" />
+                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+                    isPro ? 'bg-green-50' : 'bg-gray-50'
+                  }`}>
+                    <User className={`h-6 w-6 ${
+                      isPro ? 'text-green-600' : 'text-gray-600'
+                    }`} />
                   </div>
                 </div>
               </div>
               
-              <div className="card-minimal p-6">
+              <div className="card-minimal p-6 hover:shadow-md transition-shadow">
                 <div className="flex items-center justify-between">
-                  <div>
+                  <div className="flex-1">
                     <p className="text-sm font-medium text-muted-foreground mb-2">Account Since</p>
                     <p className="text-3xl font-bold text-foreground">
                       {user.createdAt ? new Date(user.createdAt).toLocaleDateString('en-US', { 
@@ -181,8 +184,8 @@ export default function Dashboard() {
                       {user.createdAt ? new Date(user.createdAt).getFullYear() : new Date().getFullYear()}
                     </p>
                   </div>
-                  <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
-                    <Calendar className="text-foreground h-6 w-6" />
+                  <div className="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center">
+                    <Calendar className="text-purple-600 h-6 w-6" />
                   </div>
                 </div>
               </div>
@@ -191,8 +194,8 @@ export default function Dashboard() {
 
           {/* Items Section */}
           <div>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold text-foreground">Items</h2>
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-2xl font-semibold text-foreground">Items</h2>
               <div className="flex items-center space-x-2">
                 <span className="text-sm text-muted-foreground">
                   {itemCount} {itemCount === 1 ? 'item' : 'items'}

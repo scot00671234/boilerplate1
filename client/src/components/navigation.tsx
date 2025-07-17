@@ -83,56 +83,58 @@ export function Navigation() {
                       {user.firstName || "User"}
                     </button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-48" align="end" forceMount>
-                    <div className="p-2">
-                      <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-medium">{user.firstName} {user.lastName}</p>
+                  <DropdownMenuContent className="w-64 bg-background/95 backdrop-blur-md border border-border/50 shadow-lg" align="end" forceMount>
+                    <div className="p-4 border-b border-border/50">
+                      <div className="flex flex-col space-y-2">
+                        <p className="text-sm font-semibold text-foreground">{user.firstName} {user.lastName}</p>
                         <p className="text-xs text-muted-foreground truncate">
                           {user.email}
                         </p>
-                        {isPro && (
-                          <div className="status-badge active">
-                            <Crown className="w-3 h-3" />
-                            Pro
-                          </div>
-                        )}
+                        <div className={`status-badge ${isPro ? "active" : "inactive"} mt-2`}>
+                          {isPro ? (
+                            <>
+                              <Crown className="w-3 h-3" />
+                              Pro Plan
+                            </>
+                          ) : (
+                            "Free Plan"
+                          )}
+                        </div>
                       </div>
                     </div>
-                    <DropdownMenuSeparator />
-                    <Link href="/dashboard">
-                      <DropdownMenuItem>
-                        <User className="mr-2 h-4 w-4" />
-                        Dashboard
-                      </DropdownMenuItem>
-                    </Link>
-                    <Link href="/items">
-                      <DropdownMenuItem>
-                        <Package className="mr-2 h-4 w-4" />
-                        Items
-                      </DropdownMenuItem>
-                    </Link>
-                    <Link href="/settings">
-                      <DropdownMenuItem>
-                        <Settings className="mr-2 h-4 w-4" />
-                        Settings
-                      </DropdownMenuItem>
-                    </Link>
-                    {!isPro && (
-                      <>
-                        <DropdownMenuSeparator />
+                    <div className="p-1">
+                      <Link href="/dashboard">
+                        <DropdownMenuItem className="p-3 cursor-pointer">
+                          <User className="mr-3 h-4 w-4" />
+                          Dashboard
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href="/items">
+                        <DropdownMenuItem className="p-3 cursor-pointer">
+                          <Package className="mr-3 h-4 w-4" />
+                          Items
+                        </DropdownMenuItem>
+                      </Link>
+                      <Link href="/settings">
+                        <DropdownMenuItem className="p-3 cursor-pointer">
+                          <Settings className="mr-3 h-4 w-4" />
+                          Settings
+                        </DropdownMenuItem>
+                      </Link>
+                      {!isPro && (
                         <Link href="/subscribe">
-                          <DropdownMenuItem>
-                            <Crown className="mr-2 h-4 w-4" />
+                          <DropdownMenuItem className="p-3 cursor-pointer">
+                            <Crown className="mr-3 h-4 w-4" />
                             Upgrade
                           </DropdownMenuItem>
                         </Link>
-                      </>
-                    )}
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={handleLogout}>
-                      <LogOut className="mr-2 h-4 w-4" />
-                      Log out
-                    </DropdownMenuItem>
+                      )}
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem className="p-3 cursor-pointer" onClick={handleLogout}>
+                        <LogOut className="mr-3 h-4 w-4" />
+                        Log out
+                      </DropdownMenuItem>
+                    </div>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </>
