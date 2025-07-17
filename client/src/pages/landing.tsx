@@ -12,40 +12,75 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Animated background elements */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 overflow-hidden">
         <motion.div
-          className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl"
+          className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"
           animate={{
-            x: [0, 100, 0],
+            x: [0, 50, 0],
+            y: [0, -30, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute top-40 right-20 w-48 h-48 bg-gradient-to-l from-green-500/10 to-blue-500/10 rounded-full blur-3xl"
+          animate={{
+            x: [0, -40, 0],
+            y: [0, 40, 0],
+            scale: [1, 0.9, 1],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-32 left-1/4 w-56 h-56 bg-gradient-to-r from-purple-500/8 to-pink-500/8 rounded-full blur-3xl"
+          animate={{
+            x: [0, 60, 0],
             y: [0, -50, 0],
             scale: [1, 1.2, 1],
           }}
           transition={{
-            duration: 20,
+            duration: 22,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
-        <motion.div
-          className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-l from-secondary/10 to-muted/10 rounded-full blur-3xl"
-          animate={{
-            x: [0, -120, 0],
-            y: [0, 80, 0],
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        
+        {/* Floating particles */}
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-foreground/20 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -100, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 8 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 8,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
       </div>
 
       <ScrollNavigation />
 
       {/* Hero Section */}
-      <div className="pt-32 pb-20 lg:pt-40 lg:pb-32">
-        <div className="container-vercel">
+      <div className="pt-32 pb-20 lg:pt-40 lg:pb-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <motion.div 
             className="text-center max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 50 }}
@@ -63,7 +98,7 @@ export default function Landing() {
             </motion.div>
             
             <motion.h1 
-              className="text-6xl sm:text-7xl lg:text-8xl font-bold text-gradient-animated leading-tight text-balance mb-8"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gradient-animated leading-tight text-balance mb-6 sm:mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
@@ -74,7 +109,7 @@ export default function Landing() {
             </motion.h1>
             
             <motion.p 
-              className="text-xl lg:text-2xl text-muted-foreground leading-relaxed text-balance mb-10 max-w-3xl mx-auto"
+              className="text-lg sm:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-balance mb-8 sm:mb-10 max-w-3xl mx-auto px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
@@ -85,7 +120,7 @@ export default function Landing() {
             </motion.p>
             
             <motion.div 
-              className="flex flex-col sm:flex-row justify-center gap-4"
+              className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
@@ -95,7 +130,7 @@ export default function Landing() {
                 variant="primary"
                 size="lg"
                 pulse={true}
-                className="group"
+                className="group w-full sm:w-auto"
               >
                 Get started for free
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -105,6 +140,7 @@ export default function Landing() {
                 onClick={handleGetStarted}
                 variant="secondary"
                 size="lg"
+                className="w-full sm:w-auto"
               >
                 View demo
               </AnimatedButton>
@@ -112,7 +148,7 @@ export default function Landing() {
 
             {/* Stats */}
             <motion.div
-              className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+              className="mt-12 sm:mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}
@@ -129,8 +165,8 @@ export default function Landing() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1.2 + index * 0.1, duration: 0.4 }}
                 >
-                  <div className="text-2xl lg:text-3xl font-bold text-foreground">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground">{stat.value}</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -139,8 +175,8 @@ export default function Landing() {
       </div>
 
       {/* Features Section */}
-      <AnimatedSection className="py-20 lg:py-32">
-        <div className="container-vercel">
+      <AnimatedSection className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <AnimatedSection className="text-center mb-16" delay={0.2}>
             <motion.h2 
               className="text-4xl lg:text-5xl font-bold text-foreground mb-6"
@@ -230,8 +266,8 @@ export default function Landing() {
       </AnimatedSection>
 
       {/* Pricing Section */}
-      <AnimatedSection className="py-20 lg:py-32 bg-gradient-soft">
-        <div className="container-vercel">
+      <AnimatedSection className="py-20 lg:py-32 bg-gradient-soft px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <AnimatedSection className="text-center mb-16" delay={0.2}>
             <motion.h2 
               className="text-4xl lg:text-5xl font-bold text-foreground mb-6"
@@ -254,7 +290,7 @@ export default function Landing() {
           </AnimatedSection>
           
           <motion.div 
-            className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+            className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto px-4"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -298,9 +334,9 @@ export default function Landing() {
                     {feature.included ? (
                       <Check className="text-green-500 mr-3 h-5 w-5 flex-shrink-0" />
                     ) : (
-                      <X className="text-muted-foreground mr-3 h-5 w-5 flex-shrink-0" />
+                      <X className="text-red-400 mr-3 h-5 w-5 flex-shrink-0" />
                     )}
-                    <span className={feature.included ? "text-foreground" : "text-muted-foreground"}>
+                    <span className={`text-sm sm:text-base font-medium ${feature.included ? "text-foreground" : "text-muted-foreground line-through"}`}>
                       {feature.text}
                     </span>
                   </motion.li>
@@ -366,7 +402,7 @@ export default function Landing() {
                     transition={{ delay: 1.2 + index * 0.1, duration: 0.4 }}
                   >
                     <Check className="text-green-400 mr-3 h-5 w-5 flex-shrink-0" />
-                    <span>{feature}</span>
+                    <span className="text-sm sm:text-base font-medium text-white">{feature}</span>
                   </motion.li>
                 ))}
               </ul>
@@ -386,8 +422,8 @@ export default function Landing() {
       </AnimatedSection>
 
       {/* CTA Section */}
-      <AnimatedSection className="py-20 lg:py-32">
-        <div className="container-vercel">
+      <AnimatedSection className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <motion.div 
             className="text-center max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 50 }}
@@ -428,7 +464,7 @@ export default function Landing() {
                 className="text-lg px-10 py-4"
               >
                 Start building today
-                <Rocket className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-2 w-5 h-5" />
               </AnimatedButton>
             </motion.div>
           </motion.div>
