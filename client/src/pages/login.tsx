@@ -9,6 +9,9 @@ import { apiRequest } from "@/lib/queryClient";
 import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
 
+import { motion } from "framer-motion";
+import { AnimatedButton } from "@/components/animated-button";
+
 export default function Login() {
   const [activeTab, setActiveTab] = useState("login");
   const [showPassword, setShowPassword] = useState(false);
