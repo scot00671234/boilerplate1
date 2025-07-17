@@ -93,7 +93,7 @@ export default function Landing() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <div className="pricing-card">
+            <div className="card-minimal pricing-card">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-foreground mb-1">Free</h3>
                 <div className="text-4xl font-bold text-foreground mb-2">
@@ -127,7 +127,7 @@ export default function Landing() {
               </button>
             </div>
             
-            <div className="pricing-card featured">
+            <div className="card-minimal pricing-card featured">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                 <div className="status-badge active">Popular</div>
               </div>

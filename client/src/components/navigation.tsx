@@ -56,22 +56,16 @@ export function Navigation() {
               <div className="w-6 h-6 rounded-full bg-muted animate-pulse" />
             ) : isAuthenticated && user ? (
               <>
-                <div className="hidden md:flex items-center space-x-1">
-                  <Link href="/dashboard">
-                    <button className="btn-outline-minimal">
-                      Dashboard
-                    </button>
+                <div className="hidden md:flex nav-tabs">
+                  <Link href="/dashboard" className={`nav-tab ${location === "/dashboard" ? "active" : ""}`}>
+                    Dashboard
                   </Link>
-                  <Link href="/items">
-                    <button className="btn-outline-minimal">
-                      Items
-                    </button>
+                  <Link href="/items" className={`nav-tab ${location === "/items" ? "active" : ""}`}>
+                    Items
                   </Link>
                   {!isPro && (
-                    <Link href="/subscribe">
-                      <button className="btn-minimal">
-                        Upgrade
-                      </button>
+                    <Link href="/subscribe" className="nav-tab">
+                      Upgrade
                     </Link>
                   )}
                 </div>

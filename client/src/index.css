@@ -160,8 +160,9 @@
 
 /* Minimal navigation */
 .nav-minimal {
-  border-bottom: 1px solid hsl(var(--border));
-  background: hsl(var(--background));
+  border-bottom: 1px solid hsl(var(--border) / 0.5);
+  background: hsl(var(--background) / 0.95);
+  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 50;
@@ -173,63 +174,71 @@
   color: hsl(var(--primary-foreground));
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: var(--radius);
+  border-radius: 8px;
   font-weight: 500;
   font-size: 0.875rem;
-  transition: all 0.15s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .btn-minimal:hover {
   background: hsl(var(--primary) / 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
 }
 
 .btn-outline-minimal {
-  background: transparent;
+  background: hsl(var(--background) / 0.95);
+  backdrop-filter: blur(10px);
   color: hsl(var(--foreground));
-  border: 1px solid hsl(var(--border));
+  border: 1px solid hsl(var(--border) / 0.5);
   padding: 0.5rem 1rem;
-  border-radius: var(--radius);
+  border-radius: 8px;
   font-weight: 500;
   font-size: 0.875rem;
-  transition: all 0.15s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .btn-outline-minimal:hover {
-  background: hsl(var(--muted));
+  background: hsl(var(--muted) / 0.8);
+  border-color: hsl(var(--border) / 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
 }
 
 /* Minimal cards */
 .card-minimal {
-  background: hsl(var(--card));
-  border: 1px solid hsl(var(--border));
-  border-radius: var(--radius);
+  background: hsl(var(--card) / 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(var(--border) / 0.5);
+  border-radius: 12px;
   padding: 1.5rem;
-  transition: all 0.15s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .card-minimal:hover {
-  border-color: hsl(var(--muted-foreground) / 0.3);
+  border-color: hsl(var(--border) / 0.8);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
 }
 
 /* Pricing cards */
 .pricing-card {
-  background: hsl(var(--card));
-  border: 1px solid hsl(var(--border));
-  border-radius: var(--radius);
   padding: 2rem;
   position: relative;
-  transition: all 0.15s ease;
 }
 
 .pricing-card:hover {
-  border-color: hsl(var(--foreground));
+  border-color: hsl(var(--primary) / 0.4);
 }
 
 .pricing-card.featured {
-  border-color: hsl(var(--primary));
-  box-shadow: 0 0 0 1px hsl(var(--primary));
+  background: hsl(var(--primary) / 0.05);
+  border-color: hsl(var(--primary) / 0.2);
 }
 
 /* Status badges */
@@ -261,6 +270,41 @@
   backdrop-filter: blur(12px);
   border: 1px solid hsl(var(--border) / 0.5);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Navigation tabs with glass effect */
+.nav-tabs {
+  display: flex;
+  background: hsl(var(--muted) / 0.3);
+  border-radius: 12px;
+  padding: 0.25rem;
+  border: 1px solid hsl(var(--border) / 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.nav-tab {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-tab:hover {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background) / 0.5);
+}
+
+.nav-tab.active {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid hsl(var(--border) / 0.5);
 }
 
 /* Grid layouts */
