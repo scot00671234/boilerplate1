@@ -81,105 +81,93 @@ export default function Dashboard() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <div className="container-professional section-padding animate-fade-in">
+      <div className="container-vercel section-spacing animate-fade-in">
         {/* Dashboard Header */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-comfortable lg:space-y-0">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
           <div>
-            <h1 className="text-4xl font-bold text-foreground">Dashboard</h1>
-            <p className="text-xl text-muted-foreground">Manage your items and account</p>
+            <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
+            <p className="text-lg text-muted-foreground">Manage your items and account</p>
           </div>
-          <div className="flex items-center space-x-6">
-            <Badge 
-              className={isPro ? "status-active" : "status-inactive"}
-            >
+          <div className="flex items-center space-x-3 mt-4 lg:mt-0">
+            <div className={`status-badge ${isPro ? "active" : "inactive"}`}>
               {isPro ? (
                 <>
-                  <Crown className="w-4 h-4 mr-2" />
+                  <Crown className="w-3 h-3" />
                   Pro Plan
                 </>
               ) : (
                 "Free Plan"
               )}
-            </Badge>
+            </div>
             <Link href="/settings">
-              <Button variant="ghost" size="sm" className="p-3">
-                <Settings className="h-5 w-5" />
-              </Button>
+              <button className="btn-outline-minimal">
+                <Settings className="h-4 w-4 mr-1" />
+                Settings
+              </button>
             </Link>
           </div>
         </div>
 
         {/* Upgrade Banner (Free Users) */}
         {!isPro && (
-          <Alert className="gradient-border animate-slide-up space-y-comfortable">
-            <Crown className="h-5 w-5" />
-            <AlertDescription className="flex items-center justify-between p-6">
+          <div className="card-minimal border-primary/20 bg-primary/5 p-4 mb-8">
+            <div className="flex items-center justify-between">
               <div>
-                <strong className="text-lg">Upgrade to Pro</strong>
-                <p className="text-muted-foreground mt-1">Unlock unlimited items and advanced features</p>
+                <h3 className="font-semibold text-foreground">Upgrade to Pro</h3>
+                <p className="text-sm text-muted-foreground">Unlock unlimited items and advanced features</p>
               </div>
               <Link href="/subscribe">
-                <Button className="btn-professional ml-6">
+                <button className="btn-minimal">
                   Upgrade Now
-                </Button>
+                </button>
               </Link>
-            </AlertDescription>
-          </Alert>
+            </div>
+          </div>
         )}
 
         {/* Quick Stats */}
-        <div className="grid-professional space-y-comfortable">
-          <Card className="metric-card">
-            <CardContent className="p-8">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-muted-foreground text-sm font-medium mb-2">Items Created</p>
-                  <p className="text-3xl font-bold text-foreground">
-                    {itemCount} {!isPro ? "/ 1" : ""}
-                  </p>
-                </div>
-                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
-                  <Package className="text-primary h-7 w-7" />
-                </div>
+        <div className="grid-3 mb-8">
+          <div className="card-minimal">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Items Created</p>
+                <p className="text-2xl font-bold text-foreground">
+                  {itemCount} {!isPro ? "/ 1" : ""}
+                </p>
               </div>
-            </CardContent>
-          </Card>
+              <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+                <Package className="text-foreground h-5 w-5" />
+              </div>
+            </div>
+          </div>
           
-          <Card className="metric-card">
-            <CardContent className="p-8">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-muted-foreground text-sm font-medium mb-2">Plan Status</p>
-                  <p className="text-3xl font-bold text-foreground">
-                    {isPro ? "Pro" : "Free"}
-                  </p>
-                </div>
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${
-                  isPro ? "bg-chart-1/10" : "bg-chart-4/10"
-                }`}>
-                  <User className={`h-7 w-7 ${
-                    isPro ? "text-chart-1" : "text-chart-4"
-                  }`} />
-                </div>
+          <div className="card-minimal">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Plan Status</p>
+                <p className="text-2xl font-bold text-foreground">
+                  {isPro ? "Pro" : "Free"}
+                </p>
               </div>
-            </CardContent>
-          </Card>
+              <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+                <User className="text-foreground h-5 w-5" />
+              </div>
+            </div>
+          </div>
           
-          <Card className="metric-card">
-            <CardContent className="p-8">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-muted-foreground text-sm font-medium mb-2">Account Since</p>
-                  <p className="text-3xl font-bold text-foreground">
-                    {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : "Today"}
-                  </p>
-                </div>
-                <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center">
-                  <Calendar className="text-accent h-7 w-7" />
-                </div>
+          <div className="card-minimal">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Account Since</p>
+                <p className="text-2xl font-bold text-foreground">
+                  {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : "Today"}
+                </p>
               </div>
-            </CardContent>
-          </Card>
+              <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+                <Calendar className="text-foreground h-5 w-5" />
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Item Manager */}

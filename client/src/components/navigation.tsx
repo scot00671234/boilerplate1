@@ -41,68 +41,59 @@ export function Navigation() {
   const isPro = user?.subscriptionStatus === 'active';
 
   return (
-    <nav className="nav-professional">
-      <div className="container-professional">
-        <div className="flex justify-between items-center h-20">
+    <nav className="nav-minimal">
+      <div className="container-vercel">
+        <div className="flex justify-between items-center h-14">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center group">
-              <Package className="text-primary text-2xl mr-3 transition-transform group-hover:scale-110" />
-              <span className="text-xl font-bold text-gradient">SaaS</span>
+            <Link href="/" className="flex items-center">
+              <Package className="text-foreground w-5 h-5 mr-2" />
+              <span className="text-lg font-medium text-foreground">SaaS</span>
             </Link>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             {isLoading ? (
-              <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+              <div className="w-6 h-6 rounded-full bg-muted animate-pulse" />
             ) : isAuthenticated && user ? (
               <>
-                <div className="hidden md:flex items-center space-x-6">
+                <div className="hidden md:flex items-center space-x-1">
                   <Link href="/dashboard">
-                    <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground transition-colors">
+                    <button className="btn-outline-minimal">
                       Dashboard
-                    </Button>
+                    </button>
                   </Link>
                   <Link href="/items">
-                    <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground transition-colors">
-                      My Items
-                    </Button>
+                    <button className="btn-outline-minimal">
+                      Items
+                    </button>
                   </Link>
                   {!isPro && (
                     <Link href="/subscribe">
-                      <Button size="sm" className="btn-gradient">
-                        <Crown className="w-4 h-4 mr-1" />
+                      <button className="btn-minimal">
                         Upgrade
-                      </Button>
+                      </button>
                     </Link>
                   )}
                 </div>
 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                      <Avatar className="h-8 w-8">
-                        <AvatarImage src={user.profileImageUrl || ""} alt="Profile" />
-                        <AvatarFallback className="bg-primary text-primary-foreground">
-                          {getUserInitials()}
-                        </AvatarFallback>
-                      </Avatar>
-                    </Button>
+                    <button className="btn-outline-minimal">
+                      <User className="w-4 h-4 mr-1" />
+                      {user.firstName || "User"}
+                    </button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-56" align="end" forceMount>
-                    <div className="flex items-center justify-start gap-2 p-2">
-                      <div className="flex flex-col space-y-1 leading-none">
-                        {user.firstName && user.lastName && (
-                          <p className="font-medium">{user.firstName} {user.lastName}</p>
-                        )}
-                        <p className="w-[200px] truncate text-sm text-muted-foreground">
+                  <DropdownMenuContent className="w-48" align="end" forceMount>
+                    <div className="p-2">
+                      <div className="flex flex-col space-y-1">
+                        <p className="text-sm font-medium">{user.firstName} {user.lastName}</p>
+                        <p className="text-xs text-muted-foreground truncate">
                           {user.email}
                         </p>
                         {isPro && (
-                          <div className="flex items-center text-xs">
-                            <Badge className="status-success text-xs px-2 py-1">
-                              <Crown className="w-3 h-3 mr-1" />
-                              Pro Member
-                            </Badge>
+                          <div className="status-badge active">
+                            <Crown className="w-3 h-3" />
+                            Pro
                           </div>
                         )}
                       </div>
@@ -117,7 +108,7 @@ export function Navigation() {
                     <Link href="/items">
                       <DropdownMenuItem>
                         <Package className="mr-2 h-4 w-4" />
-                        My Items
+                        Items
                       </DropdownMenuItem>
                     </Link>
                     <Link href="/settings">
@@ -132,7 +123,7 @@ export function Navigation() {
                         <Link href="/subscribe">
                           <DropdownMenuItem>
                             <Crown className="mr-2 h-4 w-4" />
-                            Upgrade to Pro
+                            Upgrade
                           </DropdownMenuItem>
                         </Link>
                       </>
@@ -146,9 +137,9 @@ export function Navigation() {
                 </DropdownMenu>
               </>
             ) : (
-              <Button onClick={handleLogin} className="btn-gradient">
+              <button onClick={handleLogin} className="btn-minimal">
                 Sign In
-              </Button>
+              </button>
             )}
           </div>
         </div>

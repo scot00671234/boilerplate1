@@ -1,6 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Navigation } from "@/components/navigation";
 import { Package, Zap, Palette, Cloud, Check, X } from "lucide-react";
 
@@ -14,181 +11,158 @@ export default function Landing() {
       <Navigation />
 
       {/* Hero Section */}
-      <div className="relative overflow-hidden hero-gradient">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-          style={{ backgroundImage: 'url(/hero-bg.png)' }}
-        />
-        {/* Modern Pattern Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-muted/40 to-primary/5" />
-        
-        <div className="relative container-professional section-padding-large animate-fade-in">
-          <div className="text-center space-y-generous">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground leading-tight">
-              Professional
-              <span className="text-gradient"> SaaS</span>
+      <div className="section-spacing-lg">
+        <div className="container-vercel">
+          <div className="text-center max-w-3xl mx-auto animate-fade-in">
+            <h1 className="text-5xl sm:text-6xl font-bold text-foreground leading-tight text-balance">
+              Build your SaaS faster
             </h1>
-            <p className="max-w-3xl mx-auto text-xl text-muted-foreground leading-relaxed">
-              Enterprise-grade SaaS platform designed for modern businesses. Scale your operations with comprehensive tools and professional infrastructure.
+            <p className="mt-6 text-xl text-muted-foreground leading-relaxed text-balance">
+              Ship your product with authentication, payments, and everything you need. Focus on what makes your product unique.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button 
+            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+              <button 
                 onClick={handleGetStarted}
-                size="lg"
-                className="btn-professional px-10 py-4 text-lg font-semibold"
+                className="btn-minimal px-6 py-3 text-base font-medium"
               >
-                Start Building
-              </Button>
-              <Button 
-                variant="outline"
+                Get started
+              </button>
+              <button 
                 onClick={handleGetStarted}
-                size="lg"
-                className="px-10 py-4 text-lg font-semibold border-2 hover:bg-muted/50 transition-all"
+                className="btn-outline-minimal px-6 py-3 text-base font-medium"
               >
-                View Demo
-              </Button>
+                View demo
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Features Section */}
-      <div className="bg-muted/30 section-padding-large">
-        <div className="container-professional">
-          <div className="text-center space-y-comfortable animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">Enterprise-Grade Features</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Production-ready infrastructure built by professionals for professionals
+      <div className="section-spacing">
+        <div className="container-vercel">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground">Everything you need</h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Built for developers who want to ship fast
             </p>
           </div>
           
-          <div className="grid-features">
-            <Card className="card-modern p-10 text-center">
-              <CardContent className="p-0 space-y-professional">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
-                  <Zap className="text-primary text-2xl" />
-                </div>
-                <h3 className="text-2xl font-semibold text-foreground">Rapid Development</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  Pre-built authentication, payments, and UI components to get your SaaS running in hours, not weeks.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="grid-3">
+            <div className="card-minimal text-center">
+              <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Zap className="text-foreground w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">Authentication</h3>
+              <p className="text-muted-foreground">
+                Secure user authentication with email/password and social logins.
+              </p>
+            </div>
             
-            <Card className="card-modern p-10 text-center">
-              <CardContent className="p-0">
-                <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-8 mx-auto">
-                  <Palette className="text-accent text-2xl" />
-                </div>
-                <h3 className="text-2xl font-semibold text-foreground mb-6">Modern UI Design</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  Beautiful, accessible components built with Radix UI and Tailwind CSS for a professional finish.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="card-minimal text-center">
+              <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Palette className="text-foreground w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">Payments</h3>
+              <p className="text-muted-foreground">
+                Built-in Stripe integration for subscriptions and one-time payments.
+              </p>
+            </div>
             
-            <Card className="card-modern p-10 text-center">
-              <CardContent className="p-0">
-                <div className="w-16 h-16 bg-chart-4/10 rounded-2xl flex items-center justify-center mb-8 mx-auto">
-                  <Cloud className="text-chart-4 text-2xl" />
-                </div>
-                <h3 className="text-2xl font-semibold text-foreground mb-6">Production Ready</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  Deploy anywhere with PostgreSQL, authentication, and payment processing already configured.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="card-minimal text-center">
+              <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Cloud className="text-foreground w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">Database</h3>
+              <p className="text-muted-foreground">
+                PostgreSQL with Drizzle ORM for type-safe database operations.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Pricing Section */}
-      <div className="bg-background py-32">
-        <div className="container-modern">
-          <div className="text-center mb-20 animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">Simple, Transparent Pricing</h2>
-            <p className="mt-6 text-xl text-muted-foreground">
-              Start free, upgrade when you need more power
+      <div className="section-spacing">
+        <div className="container-vercel">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground">Simple pricing</h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Start free, upgrade when you need more
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <Card className="card-modern p-10 relative">
-              <CardContent className="p-0">
-                <div className="mb-8">
-                  <h3 className="text-3xl font-bold text-foreground mb-4">Free</h3>
-                  <div className="text-5xl font-bold text-foreground mb-2">
-                    $0<span className="text-xl text-muted-foreground">/month</span>
-                  </div>
-                  <p className="text-muted-foreground">Perfect for getting started</p>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="pricing-card">
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-foreground mb-1">Free</h3>
+                <div className="text-4xl font-bold text-foreground mb-2">
+                  $0<span className="text-lg text-muted-foreground font-normal">/month</span>
                 </div>
-                <ul className="space-y-4 mb-10">
-                  <li className="flex items-center">
-                    <Check className="text-chart-1 mr-4 h-6 w-6" />
-                    <span className="text-lg">1 Item</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="text-chart-1 mr-4 h-6 w-6" />
-                    <span className="text-lg">Basic Features</span>
-                  </li>
-                  <li className="flex items-center">
-                    <X className="text-muted-foreground mr-4 h-6 w-6" />
-                    <span className="text-lg text-muted-foreground">Premium Features</span>
-                  </li>
-                  <li className="flex items-center">
-                    <X className="text-muted-foreground mr-4 h-6 w-6" />
-                    <span className="text-lg text-muted-foreground">Priority Support</span>
-                  </li>
-                </ul>
-                <Button 
-                  onClick={handleGetStarted}
-                  variant="outline"
-                  className="w-full text-lg py-4 border-2"
-                >
-                  Get Started
-                </Button>
-              </CardContent>
-            </Card>
-            
-            <Card className="card-modern p-10 relative gradient-border">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <Badge className="status-success px-4 py-1 text-sm font-semibold">Most Popular</Badge>
+                <p className="text-muted-foreground">Perfect for getting started</p>
               </div>
-              <CardContent className="p-0">
-                <div className="mb-8">
-                  <h3 className="text-3xl font-bold text-foreground mb-4">Pro</h3>
-                  <div className="text-5xl font-bold text-foreground mb-2">
-                    $15<span className="text-xl text-muted-foreground">/month</span>
-                  </div>
-                  <p className="text-muted-foreground">For growing businesses</p>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center">
+                  <Check className="text-foreground mr-3 h-5 w-5" />
+                  <span>1 Item</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="text-foreground mr-3 h-5 w-5" />
+                  <span>Basic Features</span>
+                </li>
+                <li className="flex items-center">
+                  <X className="text-muted-foreground mr-3 h-5 w-5" />
+                  <span className="text-muted-foreground">Premium Features</span>
+                </li>
+                <li className="flex items-center">
+                  <X className="text-muted-foreground mr-3 h-5 w-5" />
+                  <span className="text-muted-foreground">Priority Support</span>
+                </li>
+              </ul>
+              <button 
+                onClick={handleGetStarted}
+                className="btn-outline-minimal w-full py-3"
+              >
+                Get Started
+              </button>
+            </div>
+            
+            <div className="pricing-card featured">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <div className="status-badge active">Popular</div>
+              </div>
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-foreground mb-1">Pro</h3>
+                <div className="text-4xl font-bold text-foreground mb-2">
+                  $15<span className="text-lg text-muted-foreground font-normal">/month</span>
                 </div>
-                <ul className="space-y-4 mb-10">
-                  <li className="flex items-center">
-                    <Check className="text-chart-1 mr-4 h-6 w-6" />
-                    <span className="text-lg">Unlimited Items</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="text-chart-1 mr-4 h-6 w-6" />
-                    <span className="text-lg">Premium Features</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="text-chart-1 mr-4 h-6 w-6" />
-                    <span className="text-lg">Advanced Analytics</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="text-chart-1 mr-4 h-6 w-6" />
-                    <span className="text-lg">Priority Support</span>
-                  </li>
-                </ul>
-                <Button 
-                  onClick={handleGetStarted}
-                  className="btn-gradient w-full text-lg py-4"
-                >
-                  Upgrade to Pro
-                </Button>
-              </CardContent>
-            </Card>
+                <p className="text-muted-foreground">For growing businesses</p>
+              </div>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center">
+                  <Check className="text-foreground mr-3 h-5 w-5" />
+                  <span>Unlimited Items</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="text-foreground mr-3 h-5 w-5" />
+                  <span>Premium Features</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="text-foreground mr-3 h-5 w-5" />
+                  <span>Advanced Analytics</span>
+                </li>
+                <li className="flex items-center">
+                  <Check className="text-foreground mr-3 h-5 w-5" />
+                  <span>Priority Support</span>
+                </li>
+              </ul>
+              <button 
+                onClick={handleGetStarted}
+                className="btn-minimal w-full py-3"
+              >
+                Upgrade to Pro
+              </button>
+            </div>
           </div>
         </div>
       </div>
