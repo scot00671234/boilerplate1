@@ -9,16 +9,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Package, Settings, LogOut, User, Crown } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 export function Navigation() {
   const { user, isAuthenticated, isLoading } = useAuth();
-
-  const handleLogin = () => {
-    // Use programmatic navigation instead of full page reload
-    window.history.pushState(null, '', '/login');
-    window.dispatchEvent(new PopStateEvent('popstate'));
-  };
+  const [location, setLocation] = useLocation();
 
   const handleLogout = async () => {
     try {
@@ -136,9 +131,9 @@ export function Navigation() {
               </>
             ) : (
               <Link href="/login">
-                <button className="btn-minimal">
+                <span className="btn-minimal cursor-pointer">
                   Sign In
-                </button>
+                </span>
               </Link>
             )}
           </div>
