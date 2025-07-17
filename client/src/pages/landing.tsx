@@ -120,7 +120,7 @@ export default function Landing() {
             </motion.p>
             
             <motion.div 
-              className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4"
+              className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
@@ -130,7 +130,7 @@ export default function Landing() {
                 variant="primary"
                 size="lg"
                 pulse={true}
-                className="group w-full sm:w-auto"
+                className="group w-full sm:w-auto min-w-[200px]"
               >
                 Get started for free
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -140,7 +140,7 @@ export default function Landing() {
                 onClick={handleGetStarted}
                 variant="secondary"
                 size="lg"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto min-w-[140px]"
               >
                 View demo
               </AnimatedButton>
@@ -336,7 +336,7 @@ export default function Landing() {
                     ) : (
                       <X className="text-red-400 mr-3 h-5 w-5 flex-shrink-0" />
                     )}
-                    <span className={`text-sm sm:text-base font-medium ${feature.included ? "text-foreground" : "text-muted-foreground line-through"}`}>
+                    <span className={`text-sm sm:text-base font-medium ${feature.included ? "text-foreground" : "text-muted-foreground/60 line-through"}`}>
                       {feature.text}
                     </span>
                   </motion.li>

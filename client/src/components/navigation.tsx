@@ -15,7 +15,9 @@ export function Navigation() {
   const { user, isAuthenticated, isLoading } = useAuth();
 
   const handleLogin = () => {
-    window.location.href = "/login";
+    // Use programmatic navigation instead of full page reload
+    window.history.pushState(null, '', '/login');
+    window.dispatchEvent(new PopStateEvent('popstate'));
   };
 
   const handleLogout = async () => {
@@ -133,9 +135,11 @@ export function Navigation() {
                 </DropdownMenu>
               </>
             ) : (
-              <button onClick={handleLogin} className="btn-minimal">
-                Sign In
-              </button>
+              <Link href="/login">
+                <button className="btn-minimal">
+                  Sign In
+                </button>
+              </Link>
             )}
           </div>
         </div>
