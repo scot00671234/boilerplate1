@@ -41,13 +41,13 @@ export function Navigation() {
   const isPro = user?.subscriptionStatus === 'active';
 
   return (
-    <nav className="nav-modern sticky top-0 z-50 shadow-soft">
-      <div className="container-modern">
+    <nav className="nav-professional">
+      <div className="container-professional">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
             <Link href="/" className="flex items-center group">
               <Package className="text-primary text-2xl mr-3 transition-transform group-hover:scale-110" />
-              <span className="text-xl font-bold text-gradient">SaaS Boilerplate</span>
+              <span className="text-xl font-bold text-gradient">SaaS</span>
             </Link>
           </div>
 

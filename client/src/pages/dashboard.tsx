@@ -81,16 +81,16 @@ export default function Dashboard() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <div className="container-modern py-12 animate-fade-in">
+      <div className="container-professional section-padding animate-fade-in">
         {/* Dashboard Header */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-comfortable lg:space-y-0">
           <div>
-            <h1 className="text-4xl font-bold text-foreground mb-3">Dashboard</h1>
+            <h1 className="text-4xl font-bold text-foreground">Dashboard</h1>
             <p className="text-xl text-muted-foreground">Manage your items and account</p>
           </div>
-          <div className="mt-6 lg:mt-0 flex items-center space-x-6">
+          <div className="flex items-center space-x-6">
             <Badge 
-              className={isPro ? "status-success" : "status-warning"}
+              className={isPro ? "status-active" : "status-inactive"}
             >
               {isPro ? (
                 <>
@@ -111,7 +111,7 @@ export default function Dashboard() {
 
         {/* Upgrade Banner (Free Users) */}
         {!isPro && (
-          <Alert className="mb-12 gradient-border animate-slide-up">
+          <Alert className="gradient-border animate-slide-up space-y-comfortable">
             <Crown className="h-5 w-5" />
             <AlertDescription className="flex items-center justify-between p-6">
               <div>
@@ -119,7 +119,7 @@ export default function Dashboard() {
                 <p className="text-muted-foreground mt-1">Unlock unlimited items and advanced features</p>
               </div>
               <Link href="/subscribe">
-                <Button className="btn-gradient ml-6">
+                <Button className="btn-professional ml-6">
                   Upgrade Now
                 </Button>
               </Link>
@@ -128,8 +128,8 @@ export default function Dashboard() {
         )}
 
         {/* Quick Stats */}
-        <div className="grid-modern mb-16">
-          <Card className="card-modern">
+        <div className="grid-professional space-y-comfortable">
+          <Card className="metric-card">
             <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div>
@@ -145,7 +145,7 @@ export default function Dashboard() {
             </CardContent>
           </Card>
           
-          <Card className="card-modern">
+          <Card className="metric-card">
             <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div>
@@ -165,7 +165,7 @@ export default function Dashboard() {
             </CardContent>
           </Card>
           
-          <Card className="card-modern">
+          <Card className="metric-card">
             <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div>

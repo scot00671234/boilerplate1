@@ -23,20 +23,20 @@ export default function Landing() {
         {/* Modern Pattern Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-muted/40 to-primary/5" />
         
-        <div className="relative container-modern py-32 animate-fade-in">
-          <div className="text-center">
+        <div className="relative container-professional section-padding-large animate-fade-in">
+          <div className="text-center space-y-generous">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground leading-tight">
-              Your SaaS
-              <span className="text-gradient"> Boilerplate</span>
+              Professional
+              <span className="text-gradient"> SaaS</span>
             </h1>
-            <p className="mt-8 max-w-3xl mx-auto text-xl text-muted-foreground leading-relaxed">
-              A complete SaaS starter kit with authentication, subscriptions, and modern UI. Built with React, TypeScript, and Tailwind CSS for rapid development.
+            <p className="max-w-3xl mx-auto text-xl text-muted-foreground leading-relaxed">
+              Enterprise-grade SaaS platform designed for modern businesses. Scale your operations with comprehensive tools and professional infrastructure.
             </p>
-            <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button 
                 onClick={handleGetStarted}
                 size="lg"
-                className="btn-gradient px-10 py-4 text-lg font-semibold shadow-medium"
+                className="btn-professional px-10 py-4 text-lg font-semibold"
               >
                 Start Building
               </Button>
@@ -54,22 +54,22 @@ export default function Landing() {
       </div>
 
       {/* Features Section */}
-      <div className="bg-muted/30 py-32">
-        <div className="container-modern">
-          <div className="text-center mb-20 animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">Why Choose This Boilerplate?</h2>
-            <p className="mt-6 text-xl text-muted-foreground max-w-2xl mx-auto">
-              Production-ready foundation built by professionals for professionals
+      <div className="bg-muted/30 section-padding-large">
+        <div className="container-professional">
+          <div className="text-center space-y-comfortable animate-slide-up">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground">Enterprise-Grade Features</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Production-ready infrastructure built by professionals for professionals
             </p>
           </div>
           
-          <div className="grid-modern">
+          <div className="grid-features">
             <Card className="card-modern p-10 text-center">
-              <CardContent className="p-0">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 mx-auto">
+              <CardContent className="p-0 space-y-professional">
+                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
                   <Zap className="text-primary text-2xl" />
                 </div>
-                <h3 className="text-2xl font-semibold text-foreground mb-6">Rapid Development</h3>
+                <h3 className="text-2xl font-semibold text-foreground">Rapid Development</h3>
                 <p className="text-muted-foreground text-lg leading-relaxed">
                   Pre-built authentication, payments, and UI components to get your SaaS running in hours, not weeks.
                 </p>
